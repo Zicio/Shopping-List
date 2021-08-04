@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/1027c003nujfypd1?svg=true)](https://ci.appveyor.com/project/Zicio/shopping-list)
