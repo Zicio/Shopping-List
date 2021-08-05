@@ -4,16 +4,11 @@ export default class Cart {
     private _items: Buyable[] = [];
 
     add(item: Buyable): void {
-        if (item.constructor.name === 'Smartphone') {
-            const index = this._items.findIndex((product) => product.id === item.id);
-            if(index !== -1) {
-                this._items[index].quantity = this._items[index].quantity + 1;
-            }
-            else {
-                this._items.push(item);
-            }
+        const index = this._items.findIndex((product) => product.id === item.id);
+        if (item.constructor.name === 'Smartphone' && index !== -1) {
+            this._items[index].quantity = this._items[index].quantity + 1;
         }
-        else { //через id исключить повторы книг
+        else if (index === -1) {
             this._items.push(item);
         }
     }
@@ -36,11 +31,17 @@ export default class Cart {
 
     deleteProduct(id: number): void {
         const indexOfDeletedProduct = this._items.findIndex((item) => {item.id === id});
+        if (indexOfDeletedProduct === -1) {
+            throw new Error("Данного товара нет в корзине");
+        }
         this._items.splice(indexOfDeletedProduct, 1);
     }
 
     reduceQuantityofSmartphones(id: number): void {
         const indexOfSmartphone = this._items.findIndex((item) => {item.id === id});
+        if (indexOfSmartphone === -1) {
+            throw new Error("Данного товара нет в корзине");
+        }
         this._items[indexOfSmartphone].quantity = this._items[indexOfSmartphone].quantity - 1;
     }
 }
