@@ -7,7 +7,7 @@ const cart = new Cart();
 
 cart.add(new Book(1025, 'War and Piece', 'Lev Tolstoy', 2000, 1225, 1));
 console.log(cart.items);
-cart.add(new Book(1025, 'War and Piece', 'Lev Tolstoy', 2000, 1225, 1));
+cart.add(new Book(1022, 'War and Piece', 'Levy', 2000, 1225, 1));
 console.log(cart.items);
 cart.add(new Smartphone(3, 'Nokia 3110', 5000, 1));
 cart.add(new Smartphone(3, 'Nokia 3110', 5000, 1));

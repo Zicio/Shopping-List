@@ -15,7 +15,7 @@ test('should return amount', () => {
   cart.add(book2);
   expect(cart.amountWithoutDiscount()).toBe(6000);
   expect(cart.amountWithDiscount(5)).toBe(5700);
-  cart.deleteProduct(2);
+  cart.deleteProduct(1);
   expect(cart.items.length).toBe(1);
 })
 
@@ -27,9 +27,7 @@ test('should tel', () => {
   cart.add(tel2);
   expect(cart.items.length).toBe(1);
   cart.reduceQuantityofSmartphones(3);
-  expect(cart.items.length).toBe(3);
-  const indexOfSmartphone = cart.items.findIndex((item) => {item.id === 3});
-  expect(cart.items[indexOfSmartphone].quantity).toBe(1);
+  expect(cart.items.length).toBe(1);
 })
 
 

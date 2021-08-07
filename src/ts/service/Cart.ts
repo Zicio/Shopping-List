@@ -18,11 +18,9 @@ export default class Cart {
     }
 
     amountWithoutDiscount(): number {
-        let amount: number = 0;
-        for (const item of this._items) {
-            amount += item.price;
-        }
-        return amount;
+        return this._items.reduce((a, b) => {
+            return a + b.price;
+        }, 0);
     }
 
     amountWithDiscount(discount: number): number {
@@ -30,11 +28,11 @@ export default class Cart {
     }
 
     deleteProduct(id: number): void {
-        const indexOfDeletedProduct = this._items.findIndex((item) => {item.id === id});
-        if (indexOfDeletedProduct === -1) {
-            throw new Error("Данного товара нет в корзине");
-        }
-        this._items.splice(indexOfDeletedProduct, 1);
+        // const indexOfDeletedProduct = this._items.findIndex((item) => {item.id === id});
+        // if (indexOfDeletedProduct === -1) {
+        //     throw new Error("Данного товара нет в корзине");
+        // }
+        this._items = this._items.filter((item: Buyable) => item.id !== id);
     }
 
     reduceQuantityofSmartphones(id: number): void {
