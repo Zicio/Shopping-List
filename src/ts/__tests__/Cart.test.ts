@@ -19,7 +19,7 @@ test('should return amount', () => {
   expect(cart.items.length).toBe(1);
 })
 
-test('should tel', () => {
+test('should reduce quantity of smartphones', () => {
   const cart = new Cart();
   const tel1 = new Smartphone(3, 'Nokia 3110', 5000, 1);
   const tel2 = new Smartphone(3, 'Nokia 3110', 5000, 1);
@@ -30,6 +30,14 @@ test('should tel', () => {
   expect(cart.items.length).toBe(1);
 })
 
-
+test('should return error', () => {
+  const cart = new Cart();
+  const tel1 = new Smartphone(3, 'Nokia 3110', 5000, 1);
+  const tel2 = new Smartphone(3, 'Nokia 3110', 5000, 1);
+  cart.add(tel1);
+  cart.add(tel2);
+  expect(cart.items.length).toBe(1);
+  expect(() => cart.reduceQuantityofSmartphones(1)).toThrow(new Error('Данного товара нет в корзине'));
+})
 
 
